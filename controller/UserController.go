@@ -85,7 +85,12 @@ func Login(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, gin.H{"code": 400, "msg": "密码错误"})
 	}
 	//发放token
-	token := "11"
+	token, err := common.ReleaswToken(user)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"code": 500, "msg": "系统异常"})
+		log.Print("token generate error:%v", err)
+		return
+	}
 	//返回结果
 	ctx.JSON(200, gin.H{
 		"code": 200,
@@ -101,4 +106,9 @@ func isTelephoneExit(db *gorm.DB, telephone string) bool {
 		return true
 	}
 	return false
+}
+
+func Info(ctx *gin.Context) {
+	user, _ := ctx.Get("user")
+	ctx.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"user": user}})
 }
