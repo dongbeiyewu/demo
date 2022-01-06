@@ -107,5 +107,3 @@ func InitDB() *gorm.DB {
 	db.AutoMigrate(&User{})
 	return db
 }
-
-//test
