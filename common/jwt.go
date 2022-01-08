@@ -21,7 +21,7 @@ func ReleaswToken(user model.User) (string, error) {
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 			IssuedAt:  time.Now().Unix(),
-			Issuer:    "oceanlearn.tech",
+			Issuer:    "keeplogin",
 			Subject:   "user token",
 		},
 	}
