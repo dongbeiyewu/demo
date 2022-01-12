@@ -1,0 +1,10 @@
+server:
+  port : 1016
+datasource:
+    driverName : mysql
+    host : localhost
+    port : 3306
+    database : demo
+    username : root
+    password : password
+    charset : utf8
